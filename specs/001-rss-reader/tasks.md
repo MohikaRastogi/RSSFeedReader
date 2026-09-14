@@ -16,9 +16,9 @@
 
 **Purpose**: Initialize the project structure and build the minimal web-application skeleton.
 
-- [ ] T001 Create the backend and frontend project structure under `backend/RSSFeedReader.Api/` and `frontend/RSSFeedReader.UI/`
-- [ ] T002 [P] Initialize the ASP.NET Core Web API and Blazor WebAssembly projects with the .NET SDK and solution wiring
-- [ ] T003 [P] Configure shared launch settings, solution metadata, and local port alignment for backend and frontend in `backend/RSSFeedReader.Api/Properties/launchSettings.json`, `frontend/RSSFeedReader.UI/Properties/launchSettings.json`, and `frontend/RSSFeedReader.UI/wwwroot/appsettings.json`
+- [x] T001 Create the backend and frontend project structure under `backend/RSSFeedReader.Api/` and `frontend/RSSFeedReader.UI/`
+- [x] T002 [P] Initialize the ASP.NET Core Web API and Blazor WebAssembly projects with the .NET SDK and solution wiring
+- [x] T003 [P] Configure shared launch settings, solution metadata, and local port alignment for backend and frontend in `backend/RSSFeedReader.Api/Properties/launchSettings.json`, `frontend/RSSFeedReader.UI/Properties/launchSettings.json`, and `frontend/RSSFeedReader.UI/wwwroot/appsettings.json`
 
 ---
 
@@ -28,11 +28,11 @@
 
 **⚠️ CRITICAL**: No user story work can begin until this phase is complete.
 
-- [ ] T004 Configure backend application startup and middleware in `backend/RSSFeedReader.Api/Program.cs`
-- [ ] T005 [P] Configure frontend startup, API base URL, and dependency registration in `frontend/RSSFeedReader.UI/Program.cs`
-- [ ] T006 [P] Remove template demo pages and update navigation so only the MVP route remains in `frontend/RSSFeedReader.UI/Pages/` and `frontend/RSSFeedReader.UI/Layout/NavMenu.razor`
-- [ ] T007 Configure CORS and backend/frontend origin alignment in `backend/RSSFeedReader.Api/Program.cs` and `frontend/RSSFeedReader.UI/wwwroot/appsettings.json`
-- [ ] T008 Create the in-memory subscription model and validation rules in `backend/RSSFeedReader.Api/Models/SubscriptionItem.cs`
+- [x] T004 Configure backend application startup and middleware in `backend/RSSFeedReader.Api/Program.cs`
+- [x] T005 [P] Configure frontend startup, API base URL, and dependency registration in `frontend/RSSFeedReader.UI/Program.cs`
+- [x] T006 [P] Remove template demo pages and update navigation so only the MVP route remains in `frontend/RSSFeedReader.UI/Pages/` and `frontend/RSSFeedReader.UI/Layout/NavMenu.razor`
+- [x] T007 Configure CORS and backend/frontend origin alignment in `backend/RSSFeedReader.Api/Program.cs` and `frontend/RSSFeedReader.UI/wwwroot/appsettings.json`
+- [x] T008 Create the in-memory subscription model and validation rules in `backend/RSSFeedReader.Api/Models/SubscriptionItem.cs`
 
 **Checkpoint**: Foundation ready - user story implementation can now begin.
 
@@ -46,12 +46,12 @@
 
 ### Implementation for User Story 1
 
-- [ ] T009 [P] [US1] Implement the GET subscription list endpoint contract in `backend/RSSFeedReader.Api/Controllers/SubscriptionsController.cs`
-- [ ] T010 [US1] Implement the in-memory subscription service in `backend/RSSFeedReader.Api/Services/SubscriptionService.cs` with support for storing and returning the list
-- [ ] T011 [US1] Implement the POST subscription endpoint in `backend/RSSFeedReader.Api/Controllers/SubscriptionsController.cs` to accept a URL and reject empty values
-- [ ] T012 [P] [US1] Create the subscriptions page and form in `frontend/RSSFeedReader.UI/Pages/Subscriptions.razor` for user input and submit actions
-- [ ] T013 [US1] Implement the frontend API client and list rendering in `frontend/RSSFeedReader.UI/Services/SubscriptionApiClient.cs` and `frontend/RSSFeedReader.UI/Pages/Subscriptions.razor` so new entries appear immediately
-- [ ] T014 [US1] Add validation for blank, whitespace-only, and duplicate URLs based on the rules in `specs/001-rss-reader/data-model.md` and `specs/001-rss-reader/contracts/subscriptions-api.md`
+- [x] T009 [P] [US1] Implement the GET subscription list endpoint contract in `backend/RSSFeedReader.Api/Controllers/SubscriptionsController.cs`
+- [x] T010 [US1] Implement the in-memory subscription service in `backend/RSSFeedReader.Api/Services/SubscriptionService.cs` with support for storing and returning the list
+- [x] T011 [US1] Implement the POST subscription endpoint in `backend/RSSFeedReader.Api/Controllers/SubscriptionsController.cs` to accept a URL and reject empty values
+- [x] T012 [P] [US1] Create the subscriptions page and form in `frontend/RSSFeedReader.UI/Pages/Subscriptions.razor` for user input and submit actions
+- [x] T013 [US1] Implement the frontend API client and list rendering in `frontend/RSSFeedReader.UI/Services/SubscriptionApiClient.cs` and `frontend/RSSFeedReader.UI/Pages/Subscriptions.razor` so new entries appear immediately
+- [x] T014 [US1] Add validation for blank, whitespace-only, and duplicate URLs based on the rules in `specs/001-rss-reader/data-model.md` and `specs/001-rss-reader/contracts/subscriptions-api.md`
 
 **Checkpoint**: At this point, User Story 1 should be fully functional and independently testable.
 

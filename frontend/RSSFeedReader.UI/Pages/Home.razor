@@ -1,0 +1,83 @@
+﻿@page "/"
+@using RSSFeedReader.UI.Models
+@using RSSFeedReader.UI.Services
+@inject SubscriptionApiClient ApiClient
+
+<PageTitle>Subscriptions</PageTitle>
+
+<h1>RSS Feed Reader</h1>
+
+<p class="mb-4">Add a feed URL to build your subscription list.</p>
+
+<EditForm Model="@subscriptionModel" OnValidSubmit="HandleSubmit">
+    <div class="mb-3">
+        <label for="feedUrl" class="form-label">Feed URL</label>
+        <InputText id="feedUrl" class="form-control" @bind-Value="subscriptionModel.Url" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add subscription</button>
+</EditForm>
+
+@if (!string.IsNullOrWhiteSpace(errorMessage))
+{
+    <div class="alert alert-danger mt-3" role="alert">@errorMessage</div>
+}
+
+@if (subscriptions.Count > 0)
+{
+    <h2 class="mt-4">Subscriptions</h2>
+    <ul class="list-group mt-3">
+        @foreach (var subscription in subscriptions)
+        {
+            <li class="list-group-item">@subscription.Url</li>
+        }
+    </ul>
+}
+else
+{
+    <p class="mt-4">No subscriptions yet.</p>
+}
+
+@code {
+    private readonly SubscriptionInputModel subscriptionModel = new();
+    private List<SubscriptionItem> subscriptions = new();
+    private string? errorMessage;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadSubscriptionsAsync();
+    }
+
+    private async Task HandleSubmit()
+    {
+        try
+        {
+            errorMessage = null;
+            await ApiClient.AddSubscriptionAsync(subscriptionModel.Url);
+            subscriptionModel.Url = string.Empty;
+            await LoadSubscriptionsAsync();
+        }
+        catch (Exception ex)
+        {
+            errorMessage = ex.Message;
+        }
+    }
+
+    private async Task LoadSubscriptionsAsync()
+    {
+        try
+        {
+            subscriptions = await ApiClient.GetSubscriptionsAsync();
+        }
+        catch (Exception ex)
+        {
+            errorMessage = ex.Message;
+            subscriptions = new List<SubscriptionItem>();
+        }
+    }
+
+    private sealed class SubscriptionInputModel
+    {
+        public string Url { get; set; } = string.Empty;
+    }
+}
